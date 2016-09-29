@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Coding Dojo Contact Page</title>
+        <meta name="description" content="Advanced jQuery and jQuery UI: Assignment III - Contact Card">
+        <link rel="stylesheet" type="text/css" href="contactcard.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript"><!-- start jQuery here -->
+            $(document).ready(function(){
+                $("button").click(function(){
+                    $("#cards").append(
+                        "<div class='card'>" +
+                        "<div class='info'>" +
+                        "<h2>" + $("#first_name").val() + " " + $("#last_name").val() + "</h2>" +
+                        "<br>" +
+                        "<p>Click for description</p>" +
+                        "</div>" +
+                        "<div class='description'>" +
+                        "<h3>" + $("#description").val() + "</h3>" +
+                        "</div>" +
+                        "</div>"
+                    );
+                    $('input').val("");
+                    $('textarea').val("");
+                    return false
+                });
+            });
+                $(document).on("click",".info", function(){
+                    $(this).toggle();
+	                $(this).siblings().toggle();
+                });
+
+                $(document).on("click",".description", function(){
+                    $(this).toggle();
+	                $(this).siblings().toggle();
+                });
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <h1>Coding Dojo Contact Page</h1>
+            <div id="user">
+                <form>
+                    <label>First Name: </label> <input type="text" name="first_name" id="first_name"><br><br>
+                    <label>Last Name: </label> <input type="text" name="last_name" id="last_name"><br><br>
+                    <label>Description: </label><br><textarea id="description"></textarea><br><br>
+                    <button>Add User</button>
+                </form>
+            </div>
+            <div id="cards">
+            </div>
+        </div>
+    </body>
+</html>
